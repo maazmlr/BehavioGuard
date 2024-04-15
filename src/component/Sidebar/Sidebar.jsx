@@ -1,27 +1,26 @@
-import React from 'react'
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import "./sidebar.css"
-import logo from "../../assets/logo2.png"
+import React from 'react';
+import './sidebar.css';
+import logo from '../../assets/logo.png';
+import { AiFillHome, AiFillSetting } from 'react-icons/ai';
 
-
-const Sidebare = () => {
+const Sidebar = () => {
   return (
-
-    <Sidebar   backgroundColor='#050A30' className='sidebar'>
-    
-        <div className=''>
-        <img src={logo} alt="" className='h-40 w-40 block mx-auto' />
-        <Menu className='mt-20' >
-
-        <SubMenu label="Charts">
-          <MenuItem> Pie charts </MenuItem>
-          <MenuItem> Line charts </MenuItem>
-        </SubMenu>
-        <MenuItem> Documentation </MenuItem>
-        <MenuItem> Calendar </MenuItem>
-      </Menu>
+    <div className="sidebar">
+      <div className="logoo">
+        <img src={logo} alt="Logo" />
       </div>
-    </Sidebar>  )
-}
+      <div className="menu">
+        <div className="menu-item">
+          <AiFillHome className="icon" />
+          <span className="menu-item-text">Home</span>
+        </div>
+        <div className="menu-item">
+          <AiFillSetting className="icon" />
+          <span className="menu-item-text">Profile Settings</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Sidebare
+export default Sidebar;
