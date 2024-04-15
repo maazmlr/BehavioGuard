@@ -1,5 +1,6 @@
 import React from 'react';
 import './sidebar.css';
+import "../../App.css"
 import logo from '../../assets/logo.png';
 import { AiFillHome, AiFillSetting } from 'react-icons/ai';
 
