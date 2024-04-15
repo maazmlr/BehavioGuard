@@ -53,7 +53,7 @@
 .icon {
   width: 20px; /* Adjust the size as needed */
   height: 20px; /* Adjust the size as needed */
-  margin-right: 40px; /* Add spacing between icons */
+  margin-right: 3rem; /* Add spacing between icons 
   cursor: pointer; /* Add cursor pointer */
 }
 

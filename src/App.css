@@ -2,10 +2,7 @@
   padding: 0;
   margin: 0;
 }
-.body{
-  height: 100vh;
-  width: 100vw;
-}
+
 
 .btn {
   position: absolute;
@@ -356,6 +353,11 @@
 /* ------------- new Css */
 .main {
         flex-flow: column;
-        height: 100vh;
+        margin-left: 15rem;
         padding: 0px 10px;
+}
+.sec-head{
+  color: #2C4368;
+  font-size: 2rem;
+  font-weight:700;
 }
