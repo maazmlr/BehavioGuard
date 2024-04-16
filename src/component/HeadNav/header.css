@@ -83,13 +83,15 @@
 .dropdown-menu {
   position: absolute;
   top: 80%;
-  width: 10%; /* Adjust width as needed */
+  font-size: 12px;
+  width: 8%; /* Adjust width as needed */
   background-color: #5050a3; /* Background color for the dropdown menu */
   border: 1px solid #ccc; /* Border */
   border-radius: 4px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-  left: 90%; /* Adjust position to the left side */
-  padding-left: 15px;
+  left: 85%; /* Adjust position to the left side */
+  padding: 5px;
+  text-align: left;
 }
 
 
