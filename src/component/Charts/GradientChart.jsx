@@ -92,7 +92,10 @@ export function App() {
   }, []);
 
   return(
-    <Chart ref={chartRef} className="mx-auto" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
+    <div className="flex">
+          <Chart ref={chartRef} className="" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
+    </div>
+
     
 
 );

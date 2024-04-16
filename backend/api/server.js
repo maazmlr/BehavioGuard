@@ -36,7 +36,8 @@ app.options('*', cors());
       // Insert user data into SQLite database
       try {
         await db.run('INSERT INTO users (uid, email, name) VALUES (?, ?, ?)', [uid, email, name]);
-        res.status(200).json({ message: 'User signed up successfully' });
+        const token = createSecretToken(uid, email, name)
+        res.status(200).json({ message: 'User signed up successfully', token });
       } catch (error) {
         res.status(500).json({ error: error.message });
       }

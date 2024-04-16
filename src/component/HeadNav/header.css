@@ -1,5 +1,6 @@
 .header {
-  background-color: #064168;
+  /* background-color: #064168; */
+  background-color:#050A30;
   color: white;
   padding: 20px;
   width: 87%;
@@ -41,11 +42,10 @@
     align-items: center;
   }
   
-  .profile-icon,
+  
   .notification-icon {
     width: 30px;
-    height: 30px;
-    margin-left: 20px;
+    
     cursor: pointer;
   }
   
@@ -53,7 +53,7 @@
 .icon {
   width: 20px; /* Adjust the size as needed */
   height: 20px; /* Adjust the size as needed */
-  margin-right: 3rem; /* Add spacing between icons 
+  margin-right: 40px; /* Add spacing between icons */
   cursor: pointer; /* Add cursor pointer */
 }
 
@@ -66,10 +66,40 @@
   height: 30px; /* Length of the separator */
   width: 1px; /* Thickness of the separator */
   background-color: rgba(255, 255, 255, 0.5); /* Less transparent white */
-  margin-right: 40px; /* Adjust spacing between separator and icons */
+  margin-right: 20px; /* Adjust spacing between separator and icons */
 }
+.profile-icon {
 
+  margin-right: 60px; /* Adjust the margin to move the profile icon to the left */
+  cursor: pointer;
+}
 /* Add margin to the content to avoid overlapping with the fixed header */
 .content {
   margin-top: 6rem; /* Adjust according to the height of the header */
+}
+
+/* Add styles for the dropdown menu container */
+/* Add styles for the dropdown menu container */
+.dropdown-menu {
+  position: absolute;
+  top: 80%;
+  width: 10%; /* Adjust width as needed */
+  background-color: #5050a3; /* Background color for the dropdown menu */
+  border: 1px solid #ccc; /* Border */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  left: 90%; /* Adjust position to the left side */
+  padding-left: 15px;
+}
+
+
+
+/* Add styles for the dropdown menu items */
+.dropdown-content {
+  padding: 8px;
+}
+
+.dropdown-item {
+  padding: 8px 0;
+  cursor: pointer;
 }

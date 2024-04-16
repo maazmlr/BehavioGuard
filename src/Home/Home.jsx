@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className=" bg-white main  flex ">
       <h2 className="font-bold text-2xl mt-4 ">Home</h2>
-      <div className="mian-chart h-[30rem]   mt-12  mb-2  ">
+      <div className="mian-chart mt-6  mb-2 p-6 ">
         <App />
       </div>
       <div className="sub-section">

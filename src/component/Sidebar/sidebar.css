@@ -4,14 +4,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #064168;
+  background-color: #050a30;
   color: #fff;
   padding-top: 20px;
   font-family: Arial, sans-serif;
 }
 .logoo img {
-  width: 50%; 
-  height: auto; 
+  width: 50%;
+  height: auto;
   margin-left: 50px;
 }
 
@@ -23,20 +23,44 @@
   width: 80%;
 }
 
-.menu-item {
+.menu-item:hover {
+  background-color: #fdda13;
+  color: #05253a;
+  transform: scale(1.03);
+  padding-left: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.562); /* Add shadow to the hover box */
+  /* Set padding to match the default state */
+}
 
+.menu-item:hover .icon {
+  color: #05253a; /* Dark blue color */
+}
+
+.menu-item {
+  padding: 15px 0px; /* Set padding to match the default state */
   display: flex;
-  align-items: center; 
-  padding: 15px 0;
+  align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
+/*  
 .menu-item:hover {
   background-color: #074066;
-}
+}*/
 .menu-item .icon {
   margin-right: 20px;
+}
+
+.menu-item.active {
+  background-color: #fdda13; /* Yellow background color */
+  color: #05253a; /* Dark blue color */
+  transform: scale(1.03); /* Scale effect */
+  padding-left: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.562); /* Add shadow to the box */
+}
+
+.menu-item.active .icon {
+  color: #05253a; /* Dark blue color for the icon */
 }
 
 .menu-item-text {
@@ -51,6 +75,6 @@
 .header {
   margin-left: 240px; /* Adjust margin to match sidebar width */
   padding: 20px;
-  background-color: #095486;; /* Example background color */
+  background-color: #050a30; /* Example background color */
   color: white;
 }

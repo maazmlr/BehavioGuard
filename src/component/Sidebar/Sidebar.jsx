@@ -1,6 +1,5 @@
 import React from 'react';
 import './sidebar.css';
-import "../../App.css"
 import logo from '../../assets/logo.png';
 import { AiFillHome, AiFillSetting } from 'react-icons/ai';
 
@@ -11,7 +10,9 @@ const Sidebar = () => {
         <img src={logo} alt="Logo" />
       </div>
       <div className="menu">
-        <div className="menu-item">
+        <div className="menu-item active">
+          {" "}
+  
           <AiFillHome className="icon" />
           <span className="menu-item-text">Home</span>
         </div>

@@ -27,11 +27,8 @@
         "@tauri-apps/api": "^1",
         "@tauri-apps/cli-win32-x64-msvc": "^2.0.0-alpha.9",
         "antd": "^5.15.2",
-<<<<<<< HEAD
         "axios": "^1.6.8",
-=======
         "chance": "^1.1.11",
->>>>>>> 9656e7dd5c0bb595beb22cd834cc8a2385af41ee
         "chart.js": "^4.4.2",
         "classnames": "^2.5.1",
         "core-js": "^3.36.1",
@@ -39,6 +36,7 @@
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "firebase": "^10.11.0",
+        "js-cookie": "^3.0.5",
         "jsonwebtoken": "^9.0.2",
         "jwt-decode": "^4.0.0",
         "mui": "^0.0.1",

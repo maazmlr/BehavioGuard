@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailA
 import { doc, setDoc, getDoc, addDoc, collection, where, query } from 'firebase/firestore'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookie from 'js-cookie'
 
 
 const Login = () => {
@@ -62,37 +63,26 @@ const Login = () => {
 
     if (emailValid && passwordValid) {
       console.log("Login Data:", loginData);
-      axios.post('http://localhost:5000/api/signin', {
-            uid: "imqaJlyGYyfupC0Bgj6awx9GF",
-            email: loginData.email,
+      signInWithEmailAndPassword(auth, loginData.email, loginData.password)
+        .then((data) => {
+          const user = data.user;
+          console.log(data._tokenResponse.idToken)
+          axios.post('http://localhost:5000/api/signin', {
+            uid: user.uid,
+            email: user.email,
           })
             .then(function (res) {
-              console.log(res)
-              // setLoginData({ email: "", password: "" });
+              Cookie.set('uId', res.data.token)
+              setLoginData({ email: "", password: "" });
             })
             .catch(function (err) {
               console.log(err)
             })
-      // signInWithEmailAndPassword(auth, loginData.email, loginData.password)
-      //   .then((data) => {
-      //     const user = data.user;
-      //     console.log(data._tokenResponse.idToken)
-      //     axios.post('http://localhost:5000/api/signin', {
-      //       uid: user.uid,
-      //       email: user.email,
-      //     })
-      //       .then(function (res) {
-      //         console.log(res)
-      //         // setLoginData({ email: "", password: "" });
-      //       })
-      //       .catch(function (err) {
-      //         console.log(err)
-      //       })
-      //   })
-      //   .catch((error) => {
-      //     const errorCode = error.code;
-      //     console.log(error);
-      //   });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          console.log(error);
+        });
     }
   };
 
@@ -118,7 +108,7 @@ const Login = () => {
             name: signupData.name
           })
             .then(function (res) {
-              console.log(res)
+              Cookie.set('uId', res.data.token)
               setSignupData({ name: "", email: "", password: "" });
             })
             .catch(function (err) {
