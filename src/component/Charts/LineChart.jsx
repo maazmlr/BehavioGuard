@@ -43,7 +43,7 @@ const LineChart = () => {
     
   return (
     <>
-    <div className='h-72'>
+    <div className=''>
       <Scatter data={data} options={options} />
       </div>
 

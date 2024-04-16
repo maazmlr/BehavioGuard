@@ -1,12 +1,56 @@
-.sidebar{
-    /* background: #000 !important; */
-    height: auto;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    
+.sidebar {
+  width: 15rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #064168;
+  color: #fff;
+  padding-top: 20px;
+  font-family: Arial, sans-serif;
+}
+.logoo img {
+  width: 50%; 
+  height: auto; 
+  margin-left: 50px;
+}
+
+.menu {
+  border-top: 1px solid #cccccc59;
+  padding: 0 20px;
+  margin-top: 40px;
+  margin-left: 20px;
+  width: 80%;
+}
+
+.menu-item {
+
+  display: flex;
+  align-items: center; 
+  padding: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #074066;
+}
+.menu-item .icon {
+  margin-right: 20px;
+}
+
+.menu-item-text {
+  font-size: 16px;
+}
+.menu-item:hover,
+.menu-item:hover .menu-item-text {
+  background-color: #074066;
+  color: #FDB913; 
+  transform: scale(1.03);}
+
+.header {
+  margin-left: 240px; /* Adjust margin to match sidebar width */
+  padding: 20px;
+  background-color: #095486;; /* Example background color */
+  color: white;
 }
