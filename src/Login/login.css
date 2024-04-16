@@ -32,7 +32,10 @@
     color: var(--font-color);
     font-weight: 600;
   }
-  
+  /* for error */
+  .error {
+    border: 2px solid red !important;
+  }
   .card-side::after {
     position: absolute;
     content: 'Sign up';

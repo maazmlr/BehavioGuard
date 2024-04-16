@@ -20,11 +20,11 @@ function App() {
     //   <Route path='/home' element={<Home />} />
     // </Route >
     <Route>
-      <Route path="/login" element={<Login/>} />
-    <Route element={<MainLayout/>}>
-      <Route path="/" element={<Home/>}/>
+      <Route path="/" element={<Login />} />
+      <Route element={<MainLayout />}>
+        <Route path="/Home" element={<Home />} />
 
-    </Route>
+      </Route>
     </Route>
   ))
 
@@ -32,7 +32,7 @@ function App() {
     // <div className="body bg-white">
     // <LineChart/>
     // </div>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   )
 }
 
