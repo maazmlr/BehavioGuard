@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import './header.css'; // Import CSS file for styling
 import { FaBell, FaUser } from 'react-icons/fa'; // Import icons from Font Awesome
+import Cookie from 'js-cookie'
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  const signOut = () =>{
+    Cookie.remove('uId')
+    navigate('/')
+  }
 
   return (
     <>
@@ -22,7 +29,7 @@ const Header = () => {
               <div className="dropdown-menu">
                 {/* Dropdown menu items */}
                 <div className="dropdown-item">Profile Details</div>
-                <div className="dropdown-item">Sign out</div>
+                <div onClick={signOut} className="dropdown-item">Sign out</div>
 
               </div>
             )}

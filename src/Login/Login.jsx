@@ -73,6 +73,7 @@ const Login = () => {
           })
             .then(function (res) {
               Cookie.set('uId', res.data.token)
+              navigate('/Home')
               setLoginData({ email: "", password: "" });
             })
             .catch(function (err) {
@@ -109,6 +110,7 @@ const Login = () => {
           })
             .then(function (res) {
               Cookie.set('uId', res.data.token)
+              navigate('/Home')
               setSignupData({ name: "", email: "", password: "" });
             })
             .catch(function (err) {

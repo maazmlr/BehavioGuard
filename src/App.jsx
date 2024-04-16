@@ -9,8 +9,9 @@ function App() {
   const token = Cookie.get('uId')
   const router = createBrowserRouter(createRoutesFromElements(
     <Route>
+      <Route path="/" element={<Login />} />
       <Route element={token ? <MainLayout /> : ""}>
-        <Route path="/" element={token ? <Home /> : <Login/>} />
+        <Route path="/Home" element={<Home />} />
       </Route>
     </Route>
   ))
