@@ -93,7 +93,7 @@ export function App() {
 
   return(
     <div className="flex">
-          <Chart ref={chartRef} className="" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
+          <Chart ref={chartRef} className="mx" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
     </div>
 
     

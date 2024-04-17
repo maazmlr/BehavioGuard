@@ -4,14 +4,15 @@ import Login from "./Login/Login";
 import MainLayout from "./MainLayout.jsx";
 import Home from "./Home/Home.jsx";
 import Cookie from 'js-cookie'
+import { useAppContext } from './context.jsx';
 
 function App() {
-  const token = Cookie.get('uId')
+  const { token } = useAppContext()
   const router = createBrowserRouter(createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Login />} />
+
       <Route element={token ? <MainLayout /> : ""}>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={token ? <Home/> : <Login />} />
       </Route>
     </Route>
   ))

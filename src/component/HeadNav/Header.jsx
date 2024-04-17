@@ -3,16 +3,19 @@ import './header.css'; // Import CSS file for styling
 import { FaBell, FaUser } from 'react-icons/fa'; // Import icons from Font Awesome
 import Cookie from 'js-cookie'
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../../context';
 
 const Header = () => {
   const navigate = useNavigate()
+  const { setTokenContext, data } = useAppContext()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  const signOut = () =>{
+  const signOut = () => {
     Cookie.remove('uId')
+    setTokenContext("")
     navigate('/')
   }
 
@@ -23,14 +26,22 @@ const Header = () => {
         <div className="profile-section">
           <FaBell className="icon" alt="Notifications" />
           <div className="separator"></div> {/* Vertical Separator */}
-          <div className="profile-icon" onClick={toggleDropdown}>
-            <FaUser className="icon" alt="Profile" />
+          <div className="profile-icon m-t" onClick={toggleDropdown}>
+            <div>
+              <FaUser className="icon" alt="Profile" />
+            </div>
+            <div>
+              <p className='email-position'>
+                {data.email.length > 20 ? `${data.email.slice(0, 20)}...` : data.email}
+              </p>
+            </div>
+
+
             {isDropdownOpen && (
               <div className="dropdown-menu">
                 {/* Dropdown menu items */}
                 <div className="dropdown-item">Profile Details</div>
                 <div onClick={signOut} className="dropdown-item">Sign out</div>
-
               </div>
             )}
           </div>

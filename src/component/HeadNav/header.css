@@ -1,9 +1,9 @@
 .header {
   /* background-color: #064168; */
-  background-color:#050A30;
+  background-color: #050A30;
   color: white;
   padding: 20px;
-  width: 87%;
+  width: calc(100% - 15rem);
   height: 6rem;
   display: flex;
   justify-content: space-between;
@@ -12,8 +12,7 @@
   top: 0; /* Position at the top of the viewport */
   z-index: 1000; /* Ensure it's above other content */
   transition: top 0.3s; /* Add smooth transition */
-}
-  
+}  
   .logo {
     font-size: 24px;
     
@@ -53,10 +52,13 @@
 .icon {
   width: 20px; /* Adjust the size as needed */
   height: 20px; /* Adjust the size as needed */
-  margin-right: 40px; /* Add spacing between icons */
+  margin-right: 20px; /* Add spacing between icons */
+  margin-top: 2px;
   cursor: pointer; /* Add cursor pointer */
 }
-
+.m-t{
+  margin-top: 4px;
+}
 /* Hover effect */
 .icon:hover {
   color: #f8f8f8; /* Change color on hover */
@@ -69,8 +71,7 @@
   margin-right: 20px; /* Adjust spacing between separator and icons */
 }
 .profile-icon {
-
-  margin-right: 60px; /* Adjust the margin to move the profile icon to the left */
+  display: flex; /* Adjust the margin to move the profile icon to the left */
   cursor: pointer;
 }
 /* Add margin to the content to avoid overlapping with the fixed header */
@@ -83,15 +84,15 @@
 .dropdown-menu {
   position: absolute;
   top: 80%;
-  font-size: 12px;
-  width: 8%; /* Adjust width as needed */
-  background-color: #5050a3; /* Background color for the dropdown menu */
-  border: 1px solid #ccc; /* Border */
-  border-radius: 4px; /* Rounded corners */
+  font-size: 14px;
+  width: auto; /* Adjust width as needed */
+  background-color:#142395; /* Background color for the dropdown menu */
+  border: none; /* Border */
+  border-radius: 7px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-  left: 85%; /* Adjust position to the left side */
-  padding: 5px;
-  text-align: left;
+  right: 0;
+  margin-right: 30px;
+  padding: 5px 15px;
 }
 
 
@@ -102,6 +103,16 @@
 }
 
 .dropdown-item {
-  padding: 8px 0;
+  padding: 4px 0;
+  font: 500;
+  color: whitesmoke;
   cursor: pointer;
+}
+.email-position{
+  font-size: 12px;
+  padding: 4px 15px;
+  color: whitesmoke;
+  font-weight: 500;
+  background-color:#17205f6b;
+  border-radius: 15px;
 }
