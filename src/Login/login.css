@@ -1,10 +1,10 @@
 .wrapper {
-    --input-focus: #2d8cf0;
-    --font-color: #fefefe;
+    --input-focus: #142184;
+    --font-color: #7e7e7e;;
     --font-color-sub: #7e7e7e;
     --bg-color: #050A30;
     --bg-color-alt: #7e7e7e;
-    --main-color: #fefefe;
+    --main-color: #b4b2b2;
       /* display: flex; */
       /* flex-direction: column; */
       /* align-items: center; */

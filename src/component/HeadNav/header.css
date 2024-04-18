@@ -68,7 +68,7 @@
   height: 30px; /* Length of the separator */
   width: 1px; /* Thickness of the separator */
   background-color: rgba(255, 255, 255, 0.5); /* Less transparent white */
-  margin-right: 20px; /* Adjust spacing between separator and icons */
+  margin: 20px; /* Adjust spacing between separator and icons */
 }
 .profile-icon {
   display: flex; /* Adjust the margin to move the profile icon to the left */
@@ -83,17 +83,43 @@
 /* Add styles for the dropdown menu container */
 .dropdown-menu {
   position: absolute;
-  top: 80%;
+  top: 75%;
   font-size: 14px;
-  width: auto; /* Adjust width as needed */
-  background-color:#142395; /* Background color for the dropdown menu */
-  border: none; /* Border */
-  border-radius: 7px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+  width: auto;
+  background-color: #242121;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   right: 0;
-  margin-right: 30px;
-  padding: 5px 15px;
+  margin-right: 20px;
+  padding: 5px 10px;
+ /* Initially hide the dropdown */
 }
+
+.dropdown-menu.show {
+  display: block; /* Show the dropdown when it's active */
+}
+
+.dropdown-item {
+  padding: 8px 0;
+  font-weight: 500;
+  margin-top: 2px;
+  color: whitesmoke;
+  cursor: pointer;
+  display: flex;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+.margin-icon{
+  margin-right: 7px;
+  margin-left: 2px;
+  margin-top: 5px;
+}
+
+.dropdown-item:hover {
+  opacity: 0.6;/* Darker background color on hover */ 
+  transition: 0.3s ease-in-out;
+}
+
 
 
 
@@ -102,17 +128,91 @@
   padding: 8px;
 }
 
-.dropdown-item {
-  padding: 4px 0;
-  font: 500;
-  color: whitesmoke;
-  cursor: pointer;
-}
+
 .email-position{
   font-size: 12px;
-  padding: 4px 15px;
   color: whitesmoke;
+  padding: 0 6px;
   font-weight: 500;
+  margin-top: 4px;
+}
+
+/* hover me btn */
+.button {
+  position: relative;
+  background-color: transparent;
+  color: #e8e8e8;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 10px;
+  width: auto;
+  height: 40px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.2);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.icon {
+  margin-right: 5px; /* Adjust as needed */
+}
+
+.button::before {
+  content: "Sign Out";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(135deg, #7b4397, #dc2430);
+  transform: translate(0%, 90%);
+  z-index: 99;
+  position: absolute; /* Changed to absolute */
+  top: 0;
+  left: 0;
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button::after {
+  content: ""; /* Remove the "Hover me" content */
+  align-items: center;
+  justify-content: center;
+  background-color: none;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: top;
+  transform: translate(0%, -100%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+  transform: translate(0%, 0%);
+}
+
+.button:hover::after {
+  transform: translate(0%, -200%);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  scale: 0.95;
+}
+.flex-btn{
+  display: flex;
+  justify-content: space-between;
   background-color:#17205f6b;
+  
+  padding: 8px 16px;
+
   border-radius: 15px;
 }
+
+

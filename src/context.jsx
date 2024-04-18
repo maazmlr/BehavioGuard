@@ -4,12 +4,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Link } from "./Link";
 import Cookies from 'js-cookie'
 
-
-
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  // const socket = io('ws://localhost:8900/');
   const [token, setToken] = useState(null)
   const [ data, setData ] = useState()
 

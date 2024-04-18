@@ -5,8 +5,11 @@ import cors from 'cors';
 import createSecretToken from '../Services/secretKeyGenerater.js';
 import verifySecretToken from '../Services/verifySecretKey.js';
 import CodeDecoder from '../Services/decoder.js'
+import uploadImage from '../Services/clouFunc.js';
+import multer from 'multer';
 
 const app = express();
+const upload = multer();
 app.use(cors());
 app.use(express.json()); // Parse JSON request bodies
 const PORT = process.env.PORT || 5000;
@@ -38,6 +41,7 @@ app.options('*', cors());
       // Insert user data into SQLite database
       try {
         await db.run('INSERT INTO users (uid, email, name) VALUES (?, ?, ?)', [uid, email, name]);
+        
         res.status(200).json({ message: 'User signed up successfully' });
       } catch (error) {
         res.status(500).json({ error: error.message });
@@ -54,8 +58,6 @@ app.options('*', cors());
         return res.status(401).json({ error: 'Invalid user' });
       }
       const token = createSecretToken(user.uid, user.email, user.name)
-
-
 
       // User authenticated successfully
       res.status(200).json({ message: 'User signed in successfully', user, token });
@@ -84,7 +86,6 @@ app.options('*', cors());
         return res.status(401).json({ error: error.message });
       }
     });
-
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });

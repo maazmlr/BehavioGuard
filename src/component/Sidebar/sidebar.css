@@ -24,7 +24,6 @@
 }
 
 .menu-item:hover {
-  background-color: #fdda13;
   color: #05253a;
   transform: scale(1.03);
   padding-left: 15px;
@@ -33,7 +32,7 @@
 }
 
 .menu-item:hover .icon {
-  color: #05253a; /* Dark blue color */
+  color:#FDB913; /* Dark blue color */
 }
 
 .menu-item {
@@ -68,9 +67,12 @@
 }
 .menu-item:hover,
 .menu-item:hover .menu-item-text {
-  background-color: #074066;
+  /* background-color: #074066; */
   color: #FDB913; 
   transform: scale(1.03);}
+.active {
+  color: #9b9ba3; /* Desired active link color */
+}
 
 .header {
   margin-left: 240px; /* Adjust margin to match sidebar width */

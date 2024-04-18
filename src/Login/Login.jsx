@@ -9,11 +9,12 @@ import axios from "axios";
 import Cookie from 'js-cookie'
 import { useAppContext } from "../context";
 import { Link } from "../Link";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const navigate = useNavigate();
   const { setTokenContext } = useAppContext()
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password1: "" });
   const [signupData, setSignupData] = useState({ name: "", email: "", password: "" });
   const [loginError, setLoginError] = useState({ email: true, password: true });
   const [signupError, setSignupError] = useState({ name: true, email: true, password: true });
@@ -22,6 +23,9 @@ const Login = () => {
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
+  };
+  const showToast = () => {
+    toaster('Here is your toast.');
   };
 
   const handleSignupChange = (e) => {
@@ -40,13 +44,11 @@ const Login = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = loginData;
+    const { email, password1 } = loginData;
     const emailValid = validateEmail(email);
-    const passwordValid = validatePassword(password);
-    setLoginError({ email: !emailValid, password: !passwordValid });
 
-    if (emailValid && passwordValid) {
-      signInWithEmailAndPassword(auth, loginData.email, loginData.password)
+    if (emailValid && password1) {
+      signInWithEmailAndPassword(auth, loginData.email, loginData.password1)
         .then((data) => {
           const user = data.user;
           axios.post(`${Link}api/signin`, {
@@ -64,8 +66,7 @@ const Login = () => {
             })
         })
         .catch((error) => {
-          const errorCode = error.code;
-          console.log(error);
+          toast.error(error.code)
         });
     }
   };
@@ -80,7 +81,6 @@ const Login = () => {
     if (emailValid && passwordValid) {
       createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
         .then(async data => {
-          await sendEmailVerification(data.user)
           await setDoc(doc(db, "fypAppUsers", data.user.uid), {
             name: signupData.name,
             email: signupData.email,
@@ -91,18 +91,20 @@ const Login = () => {
             name: signupData.name
           })
             .then(function (res) {
+              toast.success(`${signupData.name} successfully sign up`)
               setSignupData({ name: "", email: "", password: "" });
+              
               setIsLogin(true); // Switch to login view after successful signup
             })
-            .catch(function (err) {
-              console.log(err)
-            })
         })
+        .catch((error) => {
+          toast.error(error.code)
+        });
     }
   };
 
   return (
-    <div className="h-screen w-screen bg-black flex justify-center items-center">
+    <div className="h-screen w-screen bg-white flex justify-center items-center">
       <div className="wrapper">
         <div className="card-switch">
           <label className="switch">
@@ -130,9 +132,9 @@ const Login = () => {
                   <input
                     type="password"
                     placeholder="Password"
-                    name="password"
+                    name="password1"
                     className={`flip-card__input`}
-                    value={loginData.password}
+                    value={loginData.password1}
                     onChange={handleLoginChange}
                     required
                   />
@@ -166,6 +168,7 @@ const Login = () => {
                     name="password"
                     className={`flip-card__input`}
                     value={signupData.password}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                     onChange={handleSignupChange}
                     required
                   />
@@ -175,6 +178,12 @@ const Login = () => {
             </div>
           </label>
         </div>
+      </div>
+      <div>
+        <Toaster
+          position="top-left"
+          reverseOrder={false}
+          />
       </div>
     </div>
   );
