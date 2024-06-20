@@ -22,7 +22,7 @@ app.options('*', cors());
   try {
     // Connect to SQLite database
     const db = await open({
-      filename: 'project_database.db',
+      filename: 'user_data.db',
       driver: sqlite3.Database, // Use sqlite3.Database as the driver
     });
 

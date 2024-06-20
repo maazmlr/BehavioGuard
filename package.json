@@ -7,7 +7,9 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "tauri": "tauri"
+        "tauri": "tauri",
+        "backend": "node backend/api/server.js",
+        "start": "concurrently \"npm run tauri dev\" \"npm run backend\""
     },
     "dependencies": {
         "@coreui/coreui": "^5.0.0",
