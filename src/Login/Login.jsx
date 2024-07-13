@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import "./login.css";
 import { db } from "../firebaseConfig";
 import { auth } from "../firebaseConfig";
-import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookie from 'js-cookie'
+import Cookie from 'js-cookie';
 import { useAppContext } from "../context";
 import { Link } from "../Link";
 import toast, { Toaster } from 'react-hot-toast';
+import { invoke } from '@tauri-apps/api/tauri';
+import logo from '../assets/logo2.png';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setTokenContext } = useAppContext()
+  const { setTokenContext } = useAppContext();
   const [loginData, setLoginData] = useState({ email: "", password1: "" });
   const [signupData, setSignupData] = useState({ name: "", email: "", password: "" });
   const [loginError, setLoginError] = useState({ email: true, password: true });
@@ -23,9 +25,6 @@ const Login = () => {
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
-  };
-  const showToast = () => {
-    toaster('Here is your toast.');
   };
 
   const handleSignupChange = (e) => {
@@ -42,31 +41,37 @@ const Login = () => {
     return password.length >= 8;
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const { email, password1 } = loginData;
     const emailValid = validateEmail(email);
 
     if (emailValid && password1) {
-      signInWithEmailAndPassword(auth, loginData.email, loginData.password1)
-        .then((data) => {
+      signInWithEmailAndPassword(auth, email, password1)
+        .then(async (data) => {
           const user = data.user;
-          axios.post(`${Link}api/signin`, {
-            uid: user.uid,
-            email: user.email,
-          })
-            .then(function (res) {
-              Cookie.set('uId', res.data.token);
-              setTokenContext(res.data.token)
-              navigate('/');
-              setLoginData({ email: "", password: "" });
-            })
-            .catch(function (err) {
-              console.log(err)
-            })
+          try {
+            const res = await axios.post(`${Link}api/signin`, {
+              uid: user.uid,
+              email: user.email,
+            });
+            Cookie.set('uId', res.data.token);
+            setTokenContext(res.data.token);
+            const uid = res.data.user.uid;
+            await invoke('start_data_collection', { uid });
+            navigate('/');
+            setLoginData({ email: "", password1: "" });
+          } catch (err) {
+            console.error(err);
+          }
+          // if (user.emailVerified) {
+            
+          // } else {
+          //   toast.error("Please verify your email before logging in.");
+          // }
         })
         .catch((error) => {
-          toast.error(error.code)
+          toast.error(error.code);
         });
     }
   };
@@ -80,34 +85,44 @@ const Login = () => {
 
     if (emailValid && passwordValid) {
       createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
-        .then(async data => {
-          await setDoc(doc(db, "fypAppUsers", data.user.uid), {
+        .then(async (userCredential) => {
+          const user = userCredential.user;
+          // await sendEmailVerification(user);
+          await setDoc(doc(db, "fypAppUsers", user.uid), {
             name: signupData.name,
             email: signupData.email,
           });
-          axios.post(`${Link}api/signup`, {
-            uid: data.user.uid,
-            email: data.user.email,
+          await axios.post(`${Link}api/signup`, {
+            uid: user.uid,
+            email: user.email,
             name: signupData.name
-          })
-            .then(function (res) {
-              toast.success(`${signupData.name} successfully sign up`)
-              setSignupData({ name: "", email: "", password: "" });
-              
-              setIsLogin(true); // Switch to login view after successful signup
-            })
+          });
+          toast.success(`Verification email sent to ${signupData.email}. Please verify your email.`);
+          setSignupData({ name: "", email: "", password: "" });
+          setIsLogin(true); // Switch to login view after successful signup
         })
         .catch((error) => {
-          toast.error(error.code)
+          toast.error(error.message);
         });
     }
   };
 
   return (
-    <div className="h-screen w-screen bg-white flex justify-center items-center">
+    <div className="h-screen w-screen bg-white flex justify-center items-center bag">
+      <div className="section">
+        <div className="flex items-center">
+          <img className="image" src={logo} alt="logo" />
+          <div>
+            <h1 className="heading1">BehavioGuard</h1>
+            <p className="para-head f-26">Unlock with Confidence: Your Behaviors, Your Fortified Identity</p>
+            <p className="para-head f-26">Key Features: <span class="change_content"></span></p>
+          </div>
+        </div>
+      </div>
+
       <div className="wrapper">
-        <div className="card-switch">
-          <label className="switch">
+        <div className="card-switch bag">
+          <label className="switch bag">
             <input
               className="toggle"
               type="checkbox"
@@ -183,7 +198,7 @@ const Login = () => {
         <Toaster
           position="top-left"
           reverseOrder={false}
-          />
+        />
       </div>
     </div>
   );

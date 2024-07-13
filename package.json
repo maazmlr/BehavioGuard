@@ -26,7 +26,7 @@
         "@mui/material": "^5.15.13",
         "@mui/styled-engine-sc": "^6.0.0-alpha.17",
         "@popperjs/core": "^2.11.8",
-        "@tauri-apps/api": "^1",
+        "@tauri-apps/api": "^1.6.0",
         "@tauri-apps/cli-win32-x64-msvc": "^2.0.0-alpha.9",
         "antd": "^5.15.2",
         "axios": "^1.6.8",

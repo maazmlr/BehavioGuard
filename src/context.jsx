@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const uId = Cookies.get('uId');
+    
     setToken(uId);
   });
 

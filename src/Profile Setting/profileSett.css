@@ -1,0 +1,61 @@
+.profile-setting{
+    margin-left: 250px;
+    padding: 12px 30px;
+}
+hr {
+    margin: 20px 0 !important;
+}
+.heading-pro{
+    font-weight: 700;
+}
+.email-pro{
+    opacity: 0.7;
+    margin-top: -5px;
+}
+.sec-sec-fir{
+    display: flex;
+    align-items: center;
+}
+.sec-Info{
+    margin: 0px 10px;
+}
+.verified-btn{
+    padding: 5px 20px;
+    border: 1px solid #1915152d;
+    border-radius: 10px;
+}
+.verified-btn span{
+    color: rgba(0, 0, 0, 0.673);
+    font-weight: 700;
+    padding: 10px !important;
+}
+.verified-btn:hover{
+    opacity: 0.7;
+    transition: ease-in-out 0.3s;
+}
+.col span{
+    color: rgba(255, 0, 0, 0.746);
+}
+.secSec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.paragraph, .third-sec-head p{
+    font-size: 12px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.571);
+}
+.third-sec-head{
+    text-align: start !important;
+    margin-bottom: 20px;
+}
+.third-sec-head p{
+    text-align: start;
+}
+.btn-group-flex{
+    margin: 20px 0;
+}
+.btn-group-flex > button{
+    margin-right: 20px;
+}

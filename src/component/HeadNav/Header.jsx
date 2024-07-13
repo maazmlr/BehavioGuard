@@ -6,6 +6,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useAppContext } from '../../context';
 import { NavLink } from 'react-router-dom';
+import { invoke } from '@tauri-apps/api/tauri';
 
 const Header = () => {
   const { setTokenContext, data } = useAppContext()
@@ -14,8 +15,9 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  const signOut = () => {
+  const signOut = async () => {
     Cookie.remove('uId')
+    await invoke('stop_data_collection');
     setTokenContext("")
   }
 
@@ -43,9 +45,10 @@ const Header = () => {
             {isDropdownOpen && (
               <div className="dropdown-menu">
                 {/* Dropdown menu items */}
-                <NavLink  to='/'>
+                <NavLink  to='/profileSetting'>
                   <div className="dropdown-item">
                     <ManageAccountsIcon fontSize='12' className='margin-icon' />
+                    
                     <p>Profile Details</p>
                   </div>
                 </NavLink>

@@ -6,6 +6,7 @@ import Home from "./Home/Home.jsx";
 import Cookie from 'js-cookie'
 import { useAppContext } from './context.jsx';
 import Profile from './profile/profile.jsx';
+import ProSett from './Profile Setting/profSett.jsx';
 
 function App() {
   const { token } = useAppContext()
@@ -15,6 +16,7 @@ function App() {
       <Route element={token ? <MainLayout /> : ""}>
         <Route path="/" element={token ? <Home/> : <Login />} />
         <Route path="/profile" element={token ? <Profile/> : <Login />} />
+        <Route path="/profileSetting" element={token ? <ProSett/> : <Login />} />
       </Route>
     </Route>
   ))

@@ -1,10 +1,10 @@
 .wrapper {
-    --input-focus: #142184;
-    --font-color: #7e7e7e;;
-    --font-color-sub: #7e7e7e;
+    --input-focus: #F98300;
+    --font-color: #fff9f9;
+    --font-color-sub: #ffffff;
     --bg-color: #050A30;
     --bg-color-alt: #7e7e7e;
-    --main-color: #b4b2b2;
+    --main-color: #14558F;
       /* display: flex; */
       /* flex-direction: column; */
       /* align-items: center; */
@@ -31,6 +31,13 @@
     text-decoration: underline;
     color: var(--font-color);
     font-weight: 600;
+  }
+  .para-1{
+    margin-top: -20px !important;
+    font-size: 12px;
+  }
+  .bag{
+    background: linear-gradient(135deg, #050A30, #14558F), url('pattern.png');
   }
   /* for error */
   .error {
@@ -154,7 +161,7 @@
     font-size: 25px;
     font-weight: 900;
     text-align: center;
-    color: var(--main-color);
+    color: var(--font-color);
   }
   
   .flip-card__input {
@@ -191,10 +198,44 @@
     height: 40px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
-    background-color: var(--bg-color);
+    background-color: #FDB913;
     box-shadow: 4px 4px var(--main-color);
     font-size: 17px;
     font-weight: 600;
     color: var(--font-color);
     cursor: pointer;
   } 
+  .heading1{
+    color:#ef9227 !important;
+    letter-spacing: 8px;
+    font-weight: 200;
+  }
+  .section{
+    width: 810px;
+  }
+  .image{
+    width: 220px;
+    object-fit: contain;
+  }
+  .f-26{
+    font-size: 18px !important;
+  }
+  .change_content:after{
+    content: " ";
+    animation: changetext 5s infinite linear;
+    color: #fff9f9;
+    letter-spacing: 2px;
+}
+@keyframes changetext{
+    0%{content: "Adaptive authentication"}
+    25%{content: "Continues authentication";}
+    50%{content: "Real time anomaly detection";}
+    75%{content: "Time based restrictions";}
+    100%{content: "Offline authentication support";}
+}
+.para-head{
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  margin: -2px 4px;
+  color: #938c7d;
+}
