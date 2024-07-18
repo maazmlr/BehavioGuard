@@ -1,10 +1,9 @@
 .header {
   /* background-color: #064168; */
-  background-color: #050A30;
-  color: white;
-  padding: 20px;
+  background-color: #fff !important;
+  color: black !important;
+  padding: 0px 20px;
   width: calc(100% - 15rem);
-  height: 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,7 +66,7 @@
 .separator {
   height: 30px; /* Length of the separator */
   width: 1px; /* Thickness of the separator */
-  background-color: rgba(255, 255, 255, 0.5); /* Less transparent white */
+  background-color: rgba(0, 0, 0, 0.5); /* Less transparent white */
   margin: 20px; /* Adjust spacing between separator and icons */
 }
 .profile-icon {
@@ -140,7 +139,7 @@
 /* hover me btn */
 .button {
   position: relative;
-  background-color: transparent;
+  background-color: black;
   color: #e8e8e8;
   font-size: 12px;
   font-weight: 600;

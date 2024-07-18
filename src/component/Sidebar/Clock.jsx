@@ -1,23 +1,41 @@
-import React from 'react';
-import './Clock.css';
+import React, { useState } from "react";
+import "./clock.css";
+import Timer from "./Timer/timer";
+import ControlButtons from "./ControlButtons/ControlButtons";
 
-const Clock = () => {
-  const currentDate = new Date();
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-  const seconds = currentDate.getSeconds();
+function StopWatch() {
+	const [isPaused, setIsPaused] = useState(false);
+	const [time, setTime] = useState(0);
 
-  const hourDeg = ((hours % 12) + minutes / 60) * 30;
-  const minuteDeg = (minutes + seconds / 60) * 6;
-  const secondDeg = seconds * 6;
+	React.useEffect(() => {
+		let interval = null;
 
-  return (
-    <div className="clock">
-      <div className="hour" style={{ transform: `rotate(${hourDeg}deg)` }}></div>
-      <div className="minute" style={{ transform: `rotate(${minuteDeg}deg)` }}></div>
-      <div className="second" style={{ transform: `rotate(${secondDeg}deg)` }}></div>
-    </div>
-  );
-};
+		if (isPaused === false) {
+			interval = setInterval(() => {
+				setTime((time) => time + 10);
+			}, 10);
+		} else {
+			clearInterval(interval);
+		}
+		return () => {
+			clearInterval(interval);
+		};
+	}, [isPaused]);
 
-export default Clock;
+
+	const handlePauseResume = () => {
+		setIsPaused(!isPaused);
+	};
+
+	return (
+		<div className="stop-watch mt-10">
+			<Timer time={time} />
+			<ControlButtons
+				isPaused={isPaused}
+				handlePauseResume={handlePauseResume}
+			/>
+		</div>
+	);
+}
+
+export default StopWatch;

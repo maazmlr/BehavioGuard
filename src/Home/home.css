@@ -12,6 +12,21 @@
 /* card */
 .card-hover {
     perspective: 500px;
+    border-radius: 24px !important;
+}
+.card-time{
+    font-weight: bolder;
+}
+.card-para1{
+    width: 350px;
+    text-align: justify;
+    word-break: break-all;
+}
+
+.hd-card{
+    font-weight: bolder;
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
 .card {

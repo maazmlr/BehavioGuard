@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './header.css'; // Import CSS file for styling
-import { FaBell, FaUser } from 'react-icons/fa'; // Import icons from Font Awesome
+import { FaBell, FaUser  } from 'react-icons/fa';
 import Cookie from 'js-cookie'
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="logo"><strong>BehavioGuard</strong></div>
+        <div className="logo"><strong>Dashboard</strong></div>
         <div className="profile-section">
           <FaBell className="icon" alt="Notifications" />
           <div className="separator"></div> {/* Vertical Separator */}

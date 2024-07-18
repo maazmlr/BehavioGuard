@@ -4,28 +4,83 @@ import "./home.css";
 import LineChart from "../component/Charts/LineChart";
 import { App } from "../component/Charts/GradientChart";
 import AreaChart from "../component/Charts/AreaChart";
-import { PieChart } from "../component/Charts/PieChart";
+import { PieChart, BarChart } from "../component/Charts/PieChart";
+import StopWatch from "../component/Sidebar/Clock";
 
 const Home = () => {
   return (
     <div className=" bg-white main  flex ">
-      <h2 className="font-bold text-2xl mt-4 ">Home</h2>
-      <div className="card-hover1">
-        <figure className="card">
-            <div className="mian-chart mt-6  mb-2 p-6 ">
-              <App />
-            </div>
-        </figure>
-      </div>
-      <div className="sub-section">
-        <h2 className="sec-head my-4 ">Daily Use</h2>
+      <div className="daily-use flex justify-between mb-8 mt-8">
+        <div className="card-hover rounded-xl">
+          <figure className="card">
+            <figcaption className="card_title">
+              <div className="daily-use-chart p-4 mian-chart">
+                <p className="hd-card mb-6">Threats Detected</p>
+                <BarChart />
+              </div>
+            </figcaption>
+          </figure>
+        </div>
 
-        <div className="daily-use flex justify-around mb-8">
+        <div className="card-hover">
+          <figure className="card">
+            <figcaption className="card_title">
+              <div className="daily-use-chart p-4 mian-chart">
+                <p className="hd-card mb-3">Activity Log</p>
+                <div className="h-[13rem] overflow-y-auto overflow-x-hidden">
+                  <div className="mt-2 mb-2">
+                    <p className="card-time">12:30 PM</p>
+                    <p className="card-para1">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div className="mt-2 mb-2">
+                    <p className="card-time">12:30 PM</p>
+                    <p className="card-para1">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div className="mt-2 mb-2">
+                    <p className="card-time">12:30 PM</p>
+                    <p className="card-para1">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div className="mt-2 mb-2">
+                    <p className="card-time">12:30 PM</p>
+                    <p className="card-para1">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="card-hover">
+          <figure className="card">
+            <figcaption className="card_title">
+              <div className="daily-use-chart p-4 mian-chart">
+                <p className="hd-card mb-6">Stopwatch</p>
+                <StopWatch />
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div className="">
+
+        <div className="daily-use flex justify-between mb-8">
           <div className="card-hover">
             <figure className="card">
               <figcaption className="card_title">
-                <div className="daily-use-chart h-[20rem] w-[40rem] mian-chart">
-                  <AreaChart />
+                <div className="daily-use-chart p-4 mian-chart">
+                  <p className="hd-card mb-3">System Health</p>
+                  <div className="flex justify-center ">
+                    <App />
+                  </div>
                 </div>
               </figcaption>
             </figure>
@@ -34,8 +89,11 @@ const Home = () => {
           <div className="card-hover">
             <figure className="card">
               <figcaption className="card_title">
-                <div className="piechart h-[20rem] mian-chart">
-                  <PieChart />
+                <div className="piechart p-4 mian-chart">
+                  <p className="hd-card mb-3">User Activity</p>
+                  <div className="flex justify-center w-[33rem] h-[22rem]">
+                    <PieChart />
+                  </div>
                 </div>
               </figcaption>
             </figure>

@@ -23,16 +23,11 @@
   width: 80%;
 }
 
-.menu-item:hover {
-  color: #05253a;
-  transform: scale(1.03);
-  padding-left: 15px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.562); /* Add shadow to the hover box */
-  /* Set padding to match the default state */
-}
+
 
 .menu-item:hover .icon {
   color:#FDB913; /* Dark blue color */
+  transition: 0.3s ease-in-out;
 }
 
 .menu-item {
@@ -66,7 +61,7 @@
   font-size: 16px;
 }
 .menu-item:hover,
-.menu-item:hover .menu-item-text {
+.menu-item:hover .menu-item-text{
   /* background-color: #074066; */
   color: #FDB913; 
   transform: scale(1.03);}
@@ -79,4 +74,17 @@
   padding: 20px;
   background-color: #050a30; /* Example background color */
   color: white;
+}
+.margin-icon1{
+  margin-right: 15px;
+  font-size: 10px;
+}
+.menu-abs{
+  position: absolute !important;
+  bottom: 0 !important;
+  cursor: pointer;
+}
+.hover:hover{
+  opacity: 0.7;
+  transition: 0.3s ease-in-out;
 }

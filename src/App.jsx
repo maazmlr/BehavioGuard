@@ -7,6 +7,7 @@ import Cookie from 'js-cookie'
 import { useAppContext } from './context.jsx';
 import Profile from './profile/profile.jsx';
 import ProSett from './Profile Setting/profSett.jsx';
+import Alert from './Alerts/alert.jsx'
 
 function App() {
   const { token } = useAppContext()
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={token ? <Home/> : <Login />} />
         <Route path="/profile" element={token ? <Profile/> : <Login />} />
         <Route path="/profileSetting" element={token ? <ProSett/> : <Login />} />
+        <Route path="/alert" element={token ? <Alert/> : <Login />} />
       </Route>
     </Route>
   ))

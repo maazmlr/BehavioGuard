@@ -93,10 +93,24 @@ export function App() {
 
   return(
     <div className="flex">
-          <Chart ref={chartRef} className="mx" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
+          <Chart ref={chartRef} className=" h-[22rem]" options={{plugins:{title:{text:"Behavior",display:true}}}} type="line" data={chartData} />
     </div>
-
-    
-
 );
+}
+
+const data1 = {
+  labels: labels,
+  datasets: [{
+    label: 'My First Dataset',
+    data: [65, 59, 80, 81, 56, 55, 40],
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+
+export function Line(){
+  return(
+    <Chart type="line" data={data1}/>
+  )
 }
