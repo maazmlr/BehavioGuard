@@ -50,25 +50,25 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email, password1)
         .then(async (data) => {
           const user = data.user;
-          try {
-            const res = await axios.post(`${Link}api/signin`, {
-              uid: user.uid,
-              email: user.email,
-            });
-            Cookie.set('uId', res.data.token);
-            setTokenContext(res.data.token);
-            const uid = res.data.user.uid;
-            await invoke('start_data_collection', { uid });
-            navigate('/');
-            setLoginData({ email: "", password1: "" });
-          } catch (err) {
-            console.error(err);
+          
+          if (user.emailVerified) {
+            try {
+              const res = await axios.post(`${Link}api/signin`, {
+                uid: user.uid,
+                email: user.email,
+              });
+              Cookie.set('uId', res.data.token);
+              setTokenContext(res.data.token);
+              const uid = res.data.user.uid;
+              await invoke('start_data_collection', { uid });
+              navigate('/');
+              setLoginData({ email: "", password1: "" });
+            } catch (err) {
+              console.error(err);
+            }
+          } else {
+            toast.error("Please verify your email before logging in.");
           }
-          // if (user.emailVerified) {
-            
-          // } else {
-          //   toast.error("Please verify your email before logging in.");
-          // }
         })
         .catch((error) => {
           toast.error(error.code);
@@ -87,7 +87,8 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, signupData.email, signupData.password)
         .then(async (userCredential) => {
           const user = userCredential.user;
-          // await sendEmailVerification(user);
+          console.log(user)
+          await sendEmailVerification(user);
           await setDoc(doc(db, "fypAppUsers", user.uid), {
             name: signupData.name,
             email: signupData.email,

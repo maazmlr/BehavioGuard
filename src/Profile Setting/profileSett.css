@@ -23,6 +23,7 @@ hr {
     padding: 5px 20px;
     border: 1px solid #1915152d;
     border-radius: 10px;
+    cursor: none;
 }
 .verified-btn span{
     color: rgba(0, 0, 0, 0.673);
