@@ -5,26 +5,53 @@ import Cookie from 'js-cookie'
 import LogoutIcon from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { useAppContext } from '../../context';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { invoke } from '@tauri-apps/api/tauri';
+import axios from 'axios';
+import { Link } from '../../Link';
 
 const Header = () => {
   const { setTokenContext, data } = useAppContext()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  let location = useLocation();
+  let pathname = location.pathname
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
   const signOut = async () => {
-    Cookie.remove('uId')
-    await invoke('stop_data_collection');
-    setTokenContext("")
+    const token = Cookie.get('uId')
+    axios.get(`${Link}toggleStatus`, {
+      headers: {
+        'token': token
+      }
+    })
+      .then(function async (response) {
+        Cookie.remove('uId')
+        invoke('stop_data_collection');
+        setTokenContext("")
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function content(n){
+    if(n == "/"){
+      return "Dashboard"
+    }
+    else if(n == "/alert"){
+      return "Alert & Notification"
+    }
+    else if(n == "/profileSetting"){
+      return "Profile Setting"
+    }
   }
 
   return (
     <>
       <header className="header">
-        <div className="logo"><strong>Dashboard</strong></div>
+        <div className="logo"><strong>{content(pathname)}</strong></div>
         <div className="profile-section">
           <FaBell className="icon" alt="Notifications" />
           <div className="separator"></div> {/* Vertical Separator */}

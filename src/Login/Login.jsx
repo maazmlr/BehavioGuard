@@ -62,6 +62,18 @@ const Login = () => {
               const uid = res.data.user.uid;
               await invoke('start_data_collection', { uid });
               navigate('/');
+              const token = res.data.token
+              axios.get(`${Link}toggleStatus`, {
+                headers: {
+                  'token': token
+                }
+              })
+                .then(function (response) {
+                    setData(response?.data.user);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
               setLoginData({ email: "", password1: "" });
             } catch (err) {
               console.error(err);

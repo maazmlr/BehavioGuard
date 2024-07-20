@@ -31,8 +31,9 @@ app.options('*', cors());
       id INTEGER PRIMARY KEY,
       uid TEXT,
       email TEXT,
-      name TEXT
-    )`);
+      name TEXT,
+      is_active BOOLEAN DEFAULT false
+  )`);
 
     // API endpoint for user signup
     app.post('/api/signup', async (req, res) => {
@@ -41,7 +42,7 @@ app.options('*', cors());
       // Insert user data into SQLite database
       try {
         await db.run('INSERT INTO users (uid, email, name) VALUES (?, ?, ?)', [uid, email, name]);
-        
+
         res.status(200).json({ message: 'User signed up successfully' });
       } catch (error) {
         res.status(500).json({ error: error.message });
@@ -50,7 +51,6 @@ app.options('*', cors());
 
     app.post('/api/signin', async (req, res) => {
       const { email, uid } = req.body;
-
       // Check if user exists in database by email and uid
       const user = await db.get('SELECT * FROM users WHERE email = ? AND uid = ?', [email, uid]);
 
@@ -86,6 +86,35 @@ app.options('*', cors());
         return res.status(401).json({ error: error.message });
       }
     });
+
+    app.get('/toggleStatus', async (req, res) => {
+      const token = req.headers['token'];
+      const decode = verifySecretToken(token);
+
+      try {
+        // Check current is_active status
+        if (decode) {
+          const { id } = CodeDecoder(token);
+          const uid = id
+          const user = await db.get('SELECT * FROM users WHERE uid = ?', [uid]);
+
+          if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+          }
+
+          await db.run('UPDATE users SET is_active = false');
+
+          // Toggle is_active status
+          const newStatus = !user.is_active;
+          await db.run('UPDATE users SET is_active = ? WHERE uid = ?', [newStatus, uid]);
+
+          res.json({ uid: uid, is_active: newStatus });
+        }
+      } catch (error) {
+        return res.status(401).json({ error: error.message });
+      }
+    });
+
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
