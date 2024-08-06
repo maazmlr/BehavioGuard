@@ -6,15 +6,17 @@ import { App } from "../component/Charts/GradientChart";
 import AreaChart from "../component/Charts/AreaChart";
 import { PieChart, BarChart } from "../component/Charts/PieChart";
 import StopWatch from "../component/Sidebar/Clock";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const isSidebarExpanded = useSelector((state) => state.expand.value); 
   return (
-    <div className=" bg-white main  flex ">
-      <div className="daily-use flex justify-between mb-8 mt-8">
+    <div className={`bg-white main flex ${isSidebarExpanded ? 'sidebar-expanded' : ''}` }>
+      <div className="daily-use flex justify-between mb-8">
         <div className="card-hover rounded-xl">
           <figure className="card">
             <figcaption className="card_title">
-              <div className="daily-use-chart p-4 mian-chart">
+              <div className={`daily-use-chart py-6 mian-chart ${isSidebarExpanded ? 'px-4' : 'px-12'}`}>
                 <p className="hd-card mb-6">Threats Detected</p>
                 <BarChart />
               </div>
@@ -25,7 +27,7 @@ const Home = () => {
         <div className="card-hover">
           <figure className="card">
             <figcaption className="card_title">
-              <div className="daily-use-chart p-4 mian-chart">
+              <div className={`daily-use-chart py-6 mian-chart ${isSidebarExpanded ? 'px-4' : 'px-12'}`}>
                 <p className="hd-card mb-3">Activity Log</p>
                 <div className="h-[13rem] overflow-y-auto overflow-x-hidden">
                   <div className="mt-2 mb-2">
@@ -61,7 +63,7 @@ const Home = () => {
         <div className="card-hover">
           <figure className="card">
             <figcaption className="card_title">
-              <div className="daily-use-chart p-4 mian-chart">
+              <div className={`daily-use-chart py-6 mian-chart ${isSidebarExpanded ? 'px-4' : 'px-12'}`}>
                 <p className="hd-card mb-6">Stopwatch</p>
                 <StopWatch />
               </div>
@@ -76,7 +78,7 @@ const Home = () => {
           <div className="card-hover">
             <figure className="card">
               <figcaption className="card_title">
-                <div className="daily-use-chart p-4 mian-chart">
+                <div className={`daily-use-chart py-6 mian-chart ${isSidebarExpanded ? 'px-4' : 'px-12'}`}>
                   <p className="hd-card mb-3">System Health</p>
                   <div className="flex justify-center ">
                     <App />
@@ -89,7 +91,7 @@ const Home = () => {
           <div className="card-hover">
             <figure className="card">
               <figcaption className="card_title">
-                <div className="piechart p-4 mian-chart">
+                <div className={`piechart py-6 mian-chart ${isSidebarExpanded ? 'px-4' : 'px-12'}`}>
                   <p className="hd-card mb-3">User Activity</p>
                   <div className="flex justify-center w-[33rem] h-[22rem]">
                     <PieChart />

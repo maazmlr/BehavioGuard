@@ -1,53 +1,59 @@
 .header {
-  /* background-color: #064168; */
   background-color: #fff !important;
   color: black !important;
   padding: 0px 20px;
-  width: calc(100% - 15rem);
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed; /* Fix position at the top */
   top: 0; /* Position at the top of the viewport */
   z-index: 1000; /* Ensure it's above other content */
-  transition: top 0.3s; /* Add smooth transition */
-}  
-  .logo {
-    font-size: 24px;
-    text-transform: capitalize;
-  }
-  
-  .nav-list {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-item {
-    margin-right: 20px;
-  }
-  
-  .nav-item a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .nav-item a:hover {
-    text-decoration: underline;
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .notification-icon {
-    width: 30px;
-    
-    cursor: pointer;
-  }
-  
-  /* Styles for icons */
+  transition: top 0.3s, width 0.3s; /* Add smooth transition */
+}
+
+.header.sidebar-expanded {
+  padding-left: 180px;
+}
+
+.logo {
+  font-size: 24px;
+  text-transform: capitalize;
+  margin-left: 70px;
+}
+.logo.sidebar-expanded{
+  margin-left: 200px !important;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  text-decoration: underline;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  width: 30px;
+  cursor: pointer;
+}
+
+/* Styles for icons */
 .icon {
   width: 20px; /* Adjust the size as needed */
   height: 20px; /* Adjust the size as needed */
@@ -55,9 +61,11 @@
   margin-top: 2px;
   cursor: pointer; /* Add cursor pointer */
 }
-.m-t{
+
+.m-t {
   margin-top: 4px;
 }
+
 /* Hover effect */
 .icon:hover {
   color: #f8f8f8; /* Change color on hover */
@@ -69,16 +77,21 @@
   background-color: rgba(0, 0, 0, 0.5); /* Less transparent white */
   margin: 20px; /* Adjust spacing between separator and icons */
 }
+
 .profile-icon {
   display: flex; /* Adjust the margin to move the profile icon to the left */
   cursor: pointer;
 }
+
 /* Add margin to the content to avoid overlapping with the fixed header */
 .content {
   margin-top: 6rem; /* Adjust according to the height of the header */
 }
 
-/* Add styles for the dropdown menu container */
+.content.sidebar-expanded {
+  margin-left: 15rem; /* Adjust according to the sidebar width */
+}
+
 /* Add styles for the dropdown menu container */
 .dropdown-menu {
   position: absolute;
@@ -92,7 +105,7 @@
   right: 0;
   margin-right: 20px;
   padding: 5px 10px;
- /* Initially hide the dropdown */
+  /* Initially hide the dropdown */
 }
 
 .dropdown-menu.show {
@@ -108,27 +121,24 @@
   display: flex;
   transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
-.margin-icon{
+
+.margin-icon {
   margin-right: 7px;
   margin-left: 2px;
   margin-top: 5px;
 }
 
 .dropdown-item:hover {
-  opacity: 0.6;/* Darker background color on hover */ 
+  opacity: 0.6; /* Darker background color on hover */
   transition: 0.3s ease-in-out;
 }
-
-
-
 
 /* Add styles for the dropdown menu items */
 .dropdown-content {
   padding: 8px;
 }
 
-
-.email-position{
+.email-position {
   font-size: 12px;
   color: whitesmoke;
   padding: 0 6px;
@@ -204,14 +214,11 @@
 .button:active {
   scale: 0.95;
 }
-.flex-btn{
+
+.flex-btn {
   display: flex;
   justify-content: space-between;
-  background-color:#17205f6b;
-  
+  background-color: #17205f6b;
   padding: 8px 16px;
-
   border-radius: 15px;
 }
-
-

@@ -1,5 +1,5 @@
 .sidebar {
-  width: 15rem;
+  width: 4rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -8,83 +8,95 @@
   color: #fff;
   padding-top: 20px;
   font-family: Arial, sans-serif;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 999999;
 }
+
+.sidebar.expanded {
+  width: 15rem;
+}
+
 .logoo img {
   width: 50%;
   height: auto;
-  margin-left: 50px;
+  margin-left: 1.25rem;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.expanded .logoo img {
+  margin-left: 3rem;
 }
 
 .menu {
   border-top: 1px solid #cccccc59;
   padding: 0 20px;
   margin-top: 40px;
-  margin-left: 20px;
-  width: 80%;
-}
-
-
-
-.menu-item:hover .icon {
-  color:#FDB913; /* Dark blue color */
-  transition: 0.3s ease-in-out;
+  width: 100%;
 }
 
 .menu-item {
-  padding: 15px 0px; /* Set padding to match the default state */
+  padding: 15px;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-/*  
-.menu-item:hover {
-  background-color: #074066;
-}*/
+
 .menu-item .icon {
+  margin-right: 0;
+  transition: margin-right 0.3s ease;
+}
+
+.sidebar.expanded .menu-item .icon {
   margin-right: 20px;
 }
 
+.menu-item:hover .icon {
+  color: #FDB913;
+  transition: 0.3s ease-in-out;
+}
+
 .menu-item.active {
-  background-color: #fdda13; /* Yellow background color */
-  color: #05253a; /* Dark blue color */
-  transform: scale(1.03); /* Scale effect */
+  background-color: #fdda13;
+  color: #05253a;
+  transform: scale(1.03);
   padding-left: 15px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.562); /* Add shadow to the box */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.562);
 }
 
 .menu-item.active .icon {
-  color: #05253a; /* Dark blue color for the icon */
+  color: #05253a;
 }
 
 .menu-item-text {
   font-size: 16px;
-}
-.menu-item:hover,
-.menu-item:hover .menu-item-text{
-  /* background-color: #074066; */
-  color: #FDB913; 
-  transform: scale(1.03);}
-.active {
-  color: #9b9ba3; /* Desired active link color */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
-.header {
-  margin-left: 240px; /* Adjust margin to match sidebar width */
-  padding: 20px;
-  background-color: #050a30; /* Example background color */
-  color: white;
+.sidebar.expanded .menu-item-text {
+  opacity: 1;
 }
-.margin-icon1{
-  margin-right: 15px;
-  font-size: 10px;
+
+.menu-item:hover,
+.menu-item:hover .menu-item-text {
+  color: #FDB913;
+  transform: scale(1.03);
 }
-.menu-abs{
+
+.active {
+  color: #9b9ba3;
+}
+
+.menu-abs {
   position: absolute !important;
   bottom: 0 !important;
   cursor: pointer;
 }
-.hover:hover{
-  opacity: 0.7;
-  transition: 0.3s ease-in-out;
+
+.margin-icon1 {
+  margin-right: 15px;
+  font-size: 10px;
 }

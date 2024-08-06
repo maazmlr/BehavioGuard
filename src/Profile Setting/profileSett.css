@@ -1,11 +1,15 @@
 .profile-setting{
-    margin-left: 250px;
-    padding: 12px 30px;
+    margin-left:60px;
+    padding: 0px 30px;
+}
+.profile-setting.sidebar-expanded{
+    margin-left: 225px;
 }
 hr {
     margin: 20px 0 !important;
 }
 .heading-pro{
+    margin-top: -10px;
     font-weight: 700;
 }
 .email-pro{

@@ -1,17 +1,19 @@
 import "../Home/home.css";
 import { Line } from "../component/Charts/GradientChart";
+import { useSelector } from "react-redux";
 
 function Alert() {
+  const isSidebarExpanded = useSelector((state) => state.expand.value)
   return (
     <>
-      <div className=" bg-white main flex">
-        <div className="daily-use flex justify-between mb-8 mt-8">
+      <div className={`bg-white main flex ${isSidebarExpanded ? 'sidebar-expanded' : ''}`}>
+        <div className="daily-use flex justify-between mb-8">
           <div className="card-hover rounded-xl">
             <figure className="card">
               <figcaption className="card_title">
                 <div className="daily-use-chart p-4 mian-chart">
                   <p className="hd-card mb-3">Current Security Status</p>
-                  <div className="overflow-y-auto w-[33rem] h-[15rem]">
+                  <div className={`overflow-y-auto h-[15rem] ${isSidebarExpanded ? "w-[34rem]" : "w-[44rem]"}`}>
                     <div className="mt-2 mb-2">
                       <p className="">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -54,7 +56,7 @@ function Alert() {
               <figcaption className="card_title">
                 <div className="piechart p-4 mian-chart">
                   <p className="hd-card mb-3">Real-time Monitoring</p>
-                  <div className="flex justify-center w-[33rem] h-[15rem]">
+                  <div className={`flex justify-center w-[44rem] h-[15rem]`}>
                     <Line />
                   </div>
                 </div>

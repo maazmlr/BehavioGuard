@@ -363,8 +363,11 @@ body{
 /* ------------- new Css */
 .main {
         flex-flow: column;
-        margin-left: 15rem;
+        margin-left: 5rem;
         padding: 0px 10px;
+}
+.main.sidebar-expanded {
+  margin-left: 15rem;
 }
 .sec-head{
   color: #2C4368;

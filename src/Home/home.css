@@ -1,7 +1,7 @@
 .body {
     height: fit-content;
-    max-width: 82.2vw;
-    padding: 0 2rem;
+    width: 82.2vw;
+    padding: 0rem;
 }
 
 .mian-chart {
